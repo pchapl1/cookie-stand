@@ -8,7 +8,7 @@ let seattleStore = {
     maxHourlyCustomers: 65,
     avgCookiesPerCustomer: 6.3,
     hourlyCookies: {},
-    hours: ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'], 
+    hours: ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'], 
     renderList: function(element){
         // create a ul
         let ul = document.createElement('ul')
@@ -68,7 +68,7 @@ let tokyoStore = {
     maxHourlyCustomers: 24,
     avgCookiesPerCustomer: 1.2,
     hourlyCookies: {},
-    hours: ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'], 
+    hours: ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'], 
     renderList: function(element){
         // create a ul
         let ul = document.createElement('ul')
@@ -124,7 +124,7 @@ let dubaiStore = {
     maxHourlyCustomers: 38,
     avgCookiesPerCustomer: 3.7,
     hourlyCookies: {},
-    hours: ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'], 
+    hours: ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'], 
     renderList: function(element){
         // create a ul
         let ul = document.createElement('ul')
@@ -178,7 +178,7 @@ let parisStore = {
     maxHourlyCustomers: 38,
     avgCookiesPerCustomer: 2.3,
     hourlyCookies: {},
-    hours: ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'], 
+    hours: ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'], 
     renderList: function(element){
         // create a ul
         let ul = document.createElement('ul')
@@ -233,7 +233,7 @@ let limaStore = {
     maxHourlyCustomers: 16,
     avgCookiesPerCustomer: 4.6,
     hourlyCookies: {},
-    hours: ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'], 
+    hours: ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'], 
     renderList: function(element){
         // create a ul
         let ul = document.createElement('ul')
