@@ -241,8 +241,10 @@ let limaStore = {
         // keep track of total
         let total = 0
 
+        // create an h3 element
         let h3 = document.createElement('h3')
 
+        // add the objects 
         h3.textContent = `${this.location}`
         element.appendChild(h3)
 
