@@ -11,8 +11,30 @@ h1, h2, h3, h4, h5, h6 {
     color: rgb(19, 5, 5);
 }
 
+header h1 {
+    text-align: center;
+    margin: 2rem;
+}
+
 .sales-data li{
     font-family: 'Arial';
     color: rgb(17, 13, 13);
+}
+
+.store-div {
+    display: inline-block;
+    border: 1px solid black;
+    padding: 0 1rem 0 1rem;
+    margin: 1rem;
+}
+
+.store-div h3{
+    text-align: center;
+    margin:1rem 0 1rem 0;
+}
+
+ul {
+    list-style-type: none;
+    margin-bottom: 1rem;
 }
 
