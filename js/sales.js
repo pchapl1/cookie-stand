@@ -199,6 +199,7 @@ let parisStore = {
             // insert the teimplate literal in the li text content
             li.textContent = `${this.hours[i]}: ${this.cookiesPerHour()} cookies`;
 
+            // add this to hourly cookies field
             this.hourlyCookies[this.hours[i] = this.cookiesPerHour()]
 
             // append the li to the ul
@@ -256,7 +257,7 @@ let limaStore = {
             // insert the teimplate literal in the li text content
             li.textContent = `${this.hours[i]}: ${this.cookiesPerHour()} cookies`;
 
-            this.hourlyCookies[this.hours[i] = this.cookiesPerHour()]
+            this.hourlyCookies[this.hours[i]] = this.cookiesPerHour()
 
             // append the li to the ul
             ul.appendChild(li);
@@ -302,5 +303,5 @@ for (let i = 0; i < storeList.length; i++) {
     
 }
 
-
+console.log(limaStore.hourlyCookies)
 
