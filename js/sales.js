@@ -1,6 +1,6 @@
 'use strict';
 
-// Create seattle object
+
 
 let seattleStore = {
     location: 'Seattle',
@@ -60,7 +60,7 @@ let seattleStore = {
 
 }
 
-// Create seattle object
+
 
 let tokyoStore = {
     location: 'Tokyo',
@@ -282,13 +282,10 @@ let limaStore = {
 }
 
 
-
-
-
-
-
+// create the store array
 let storeList = [seattleStore, tokyoStore, dubaiStore, parisStore, limaStore]
 
+// loop through store list and call renderList method on each object
 for (let i = 0; i < storeList.length; i++) {
 
     // get the location of the current of object
