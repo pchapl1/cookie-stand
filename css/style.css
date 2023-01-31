@@ -79,7 +79,7 @@ img {
 
 table {
     width: 100%;
-    overflow: auto;
+    table-layout: fixed;
 }
 
 table, th, td, row{
