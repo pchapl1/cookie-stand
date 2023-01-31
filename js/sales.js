@@ -5,11 +5,15 @@ let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 const renderTableHead = ()=> {
 
     // get thead row
-    let row = document.querySelector('#table-head-tr')
+    let row = document.querySelector('#sales-table-head')
 
     //loop through hours 
     for (let i = 0; i < hours.length; i++) {
-
+        if (i === 0) {
+            let locationTh = document.createElement('th')
+            locationTh.textContent = "Location"
+            row.appendChild(locationTh)
+        }
         // create th
         let th = document.createElement('th')
 
@@ -18,13 +22,39 @@ const renderTableHead = ()=> {
 
         row.appendChild(th)
 
-        
     }
-
-
-
-
 }
+
+const renderTableFooter = ((array)=> {
+
+
+    // get thead row
+    let row = document.querySelector('#sales-table-footer')
+
+
+    //loop through hours 
+    for (let i = 0; i < hours.length; i++) {
+        if (i === 0) {
+            let locationTd = document.createElement('Td')
+            locationTd.textContent = "Total"
+            row.appendChild(locationTd)
+        }
+
+        let hourlyTotal = 0
+        for (let j = 0; j < array.length; j++) {
+            hourlyTotal += array[j].hourlyCookies[i]
+        }
+
+        // create th
+        let td = document.createElement('td')
+
+        // add data to td
+        td.textContent = hourlyTotal
+
+        row.appendChild(td)
+
+    }
+})
 
 
 // constructor function
@@ -40,20 +70,24 @@ function Store(location, minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCu
         return Math.floor(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers + 1) + this.minHourlyCustomers)
     },
     this.cookiesPerHour = function(){
-        return Math.floor(this.getRandomNumOfCustomers() * this.avgCookiesPerCustomer)
+        for (let i = 0; i < this.hours.length; i++) {
+            this.hourlyCookies.push(Math.floor(this.getRandomNumOfCustomers() * this.avgCookiesPerCustomer))
+        }
+        
     },
 
     this.renderTableRow = function(){
-        // get into the dom
+        
+        this.cookiesPerHour()
+
         let tableBody = document.getElementById('sales-table-body')
 
+        let row = document.createElement('row')
 
-        for (const prop in this.hourlyCookies) {
-            // create a row element
-            let row = document.createElement('row')
 
-            if (prop === '0') {
-                console.log('hello')
+        for (let i = 0; i < this.hourlyCookies.length; i++) {
+
+            if (i === 0) {
                 let locationTd = document.createElement('td')
                 locationTd.textContent = this.location
                 row.appendChild(locationTd)
@@ -61,39 +95,21 @@ function Store(location, minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCu
             // create a td element
             let td = document.createElement('td')
 
+
             // add text content to the td
-            td.textContent = `${this.hourlyCookies[prop]}`
+            td.textContent = `${this.hourlyCookies[i]}`
 
             // append the td to the row
             row.appendChild(td)
+
 
             // append the row to the table head
             tableBody.appendChild(row)  
 
 
 
-
         }
-        
-        // for (let i = 0; i < this.hourlyCookies.length; i++) {
 
-        //     console.log(this.hourlyCookies)
-        //     // create a row element
-        //     let row = document.createElement('row')
-
-        //     // create a td element
-        //     let td = document.createElement('td')
-
-        //     // add text content to the td
-        //     td.textContent = `${this.hourlyCookies[i]}`
-
-        //     // append the td to the row
-        //     row.appendChild(td)
-
-        //     // append the row to the table head
-        //     tableBody.appendChild(row)            
-            
-        // }
     }
 }
 
@@ -104,7 +120,6 @@ let lima = new Store("Lima", 23, 65, 6.3)
 let paris = new Store("Paris", 23, 65, 6.3)
 
 
-// console.log(seattle)
 let stores = [seattle,tokyo,dubai,lima,paris]
 
 for (const store of stores) {
@@ -114,6 +129,7 @@ for (const store of stores) {
 
 // call the functions
 renderTableHead()
+renderTableFooter(stores)
 
 
 
