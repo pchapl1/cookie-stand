@@ -21,9 +21,23 @@ h1, h2, h3, h4, h5, h6 {
     color: rgb(19, 5, 5);
 }
 
-header h1, p {
+header h1, p, a {
     text-align: center;
     margin: 2rem;
+}
+
+header p {
+    margin-bottom: 0;
+}
+
+.header-anchor {
+    text-align: center;
+    margin-top: 0;
+}
+
+header a {
+    display: inline-block;
+    margin-top: .6rem;
 }
 
 .sales-data li{
