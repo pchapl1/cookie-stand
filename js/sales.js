@@ -82,7 +82,7 @@ function Store(location, minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCu
 
         let tableBody = document.getElementById('sales-table-body')
 
-        let row = document.createElement('row')
+        let row = document.createElement('tr')
 
 
         for (let i = 0; i < this.hourlyCookies.length; i++) {
