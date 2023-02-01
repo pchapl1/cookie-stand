@@ -14,6 +14,7 @@ const renderTableHead = ()=> {
             locationTh.textContent = "Location"
             row.appendChild(locationTh)
         }
+
         // create th
         let th = document.createElement('th')
 
@@ -21,6 +22,12 @@ const renderTableHead = ()=> {
         th.textContent = hours[i]
 
         row.appendChild(th)
+
+        if (i === hours.length -1 ) {
+            let totalTh = document.createElement('th')
+            totalTh.textContent = "Daily Location Total"
+            row.appendChild(totalTh)
+        }
 
     }
 }
@@ -31,7 +38,7 @@ const renderTableFooter = ((array)=> {
     // get thead row
     let row = document.querySelector('#sales-table-footer')
 
-
+    let grandTotal = 0
     //loop through hours 
     for (let i = 0; i < hours.length; i++) {
         if (i === 0) {
@@ -51,9 +58,31 @@ const renderTableFooter = ((array)=> {
         // add data to td
         td.textContent = hourlyTotal
 
+        //add to grand total
+        grandTotal += hourlyTotal
+        // console.log(grandTotal)
+
+
         row.appendChild(td)
 
     }
+
+    // append the total
+    let totalTd = document.createElement('td')
+    console.log(grandTotal)
+
+    totalTd.textContent = grandTotal
+    row.appendChild(totalTd)
+})
+
+const dailyGrandTotalCookies = ((array)=> {
+
+    let total = 0
+
+    for (let i = 0; i < array.length; i++) {
+        total += array[i]
+    }
+    return total
 })
 
 
@@ -73,8 +102,14 @@ function Store(location, minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCu
         for (let i = 0; i < this.hours.length; i++) {
             this.hourlyCookies.push(Math.floor(this.getRandomNumOfCustomers() * this.avgCookiesPerCustomer))
         }
-        
     },
+    this.getDailyTotal = function(){
+        let total = 0
+        for (let i = 0; i < this.hourlyCookies.length; i++) {
+            total += this.hourlyCookies[i]
+        }
+        return total
+    }
 
     this.renderTableRow = function(){
         
@@ -102,6 +137,11 @@ function Store(location, minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCu
             // append the td to the row
             row.appendChild(td)
 
+            if (i === this.hourlyCookies.length -1) {
+                let totalTd = document.createElement('td')
+                totalTd.textContent = this.getDailyTotal()
+                row.appendChild(totalTd)
+            }
 
             // append the row to the table head
             tableBody.appendChild(row)  
@@ -131,5 +171,6 @@ for (const store of stores) {
 renderTableHead()
 renderTableFooter(stores)
 
+seattle.getDailyTotal()
 
 
