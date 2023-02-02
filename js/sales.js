@@ -1,11 +1,20 @@
 'use strict';
 
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm']
+let originalLoad = true
+
 
 const renderTableHead = ()=> {
 
-    // get thead row
-    let row = document.querySelector('#sales-table-head')
+    let table = document.querySelector('table')
+
+    let thead = document.createElement('thead')
+
+    let row = document.createElement('tr')
+
+    table.appendChild(thead)
+
+    thead.appendChild(row)
 
     //loop through hours 
     for (let i = 0; i < hours.length; i++) {
@@ -30,21 +39,30 @@ const renderTableHead = ()=> {
         }
 
     }
+
 }
 
 const renderTableFooter = ((array)=> {
 
+    let table = document.querySelector('table')
 
-    // get thead row
-    let row = document.querySelector('#sales-table-footer')
+    let tfoot = document.createElement('tfoot')
+
+    table.append(tfoot)
+
+    let row = document.createElement('tr')
+
+    tfoot.appendChild(row)
 
     let grandTotal = 0
+
     //loop through hours 
     for (let i = 0; i < hours.length; i++) {
         if (i === 0) {
             let locationTd = document.createElement('Td')
             locationTd.textContent = "Total"
             row.appendChild(locationTd)
+            console.log(`td: ${locationTd}`)
         }
 
         let hourlyTotal = 0
@@ -115,10 +133,15 @@ function Store(location, minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCu
         
         this.cookiesPerHour()
 
-        let tableBody = document.getElementById('sales-table-body')
+        let table = document.querySelector('table')
+
+        let tableBody = document.createElement('tbody')
+
+        table.append(tableBody)
 
         let row = document.createElement('tr')
 
+        tableBody.append(row)
 
         for (let i = 0; i < this.hourlyCookies.length; i++) {
 
@@ -143,6 +166,8 @@ function Store(location, minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCu
                 row.appendChild(totalTd)
             }
 
+
+
             // append the row to the table head
             tableBody.appendChild(row)  
 
@@ -162,15 +187,60 @@ let paris = new Store("Paris", 20, 38, 2.3)
 
 let stores = [seattle,tokyo,dubai,lima,paris]
 
-for (const store of stores) {
-    store.renderTableRow()
+// form section
+
+// get the form
+let form = document.querySelector('form')
+
+// create handleSubmit function
+function handleSubmit(event){
+    event.preventDefault()
+    let location = event.target.location.value
+    let minHourlyCustomers = parseInt(event.target.minHourlyCustomers.value)
+    let maxHourlyCustomers = parseInt(event.target.maxHourlyCustomers.value)
+    let avgCookiesPerCustomer = parseFloat(event.target.avgCookiesPerCustomer.value)
+
+    // create a new store
+    let newStore = new Store(location, minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCustomer)
+
+    // add new store to stores array
+    stores.push(newStore)
+
+    let footer = document.querySelector('tfoot')
+
+    footer.lastChild.remove()
+
+
+
+    originalLoad = false
+
+    let newRow = newStore.renderTableRow()
+
+
+    renderTableFooter(stores)
+    
 }
+
+// add event listener
+form.addEventListener('submit', handleSubmit)
 
 
 // call the functions
-renderTableHead()
-renderTableFooter(stores)
 
-seattle.getDailyTotal()
+function renderTable(){
 
+    if (originalLoad) {
+        console.log('original load')
+        renderTableHead()
+    }
+    for (const store of stores) {
+        store.renderTableRow()
+    }
+    renderTableFooter(stores)
+}
+
+
+if (originalLoad) {
+    renderTable()
+}
 
