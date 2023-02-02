@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sales</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/store-form.css">
     <link rel="stylesheet" href="css/sales.css">
 </head>
 <body>
@@ -19,20 +20,40 @@
 
     </header>
     <main class="container">
-
-        <h1>Sales Data</h1>
-        <table id="sales-table">
-            <thead id="sales-table-head">
-            </thead>
-            <tbody id="sales-table-body">
-
-            </tbody>
-            <tfoot id="sales-table-footer">
-
-            </tfoot>
+        <div class="form-div">
+            <form id="store-form" action="">
+                <fieldset>
+                    <legend>General Information</legend>
+                    <label>Store Location
+                        <input required type="text" id="location" name="location" placeholder="Enter Store Location">
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <legend>Store Customer Info</legend>
+                    <label>Minimum Hourly Customers
+                        <input min="0" required type="number" id="minHourlyCustomers" name="minHourlyCustomers" placeholder="Enter Minimum Hourly Customers">
+                    </label>
             
-        </table>
+                    <label>Maximum Hourly Customers
+                        <input min="1" required type="number" id="maxHourlyCustomers" name="maxHourlyCustomers" placeholder="Enter Maximum Hourly Customers">
+                    </label>
+            
+                    <label>Avg Cookies Sold Per Customer
+                        <input min="0" required type="text" id="avgCookiesPerCustomer" name="avgCookiesPerCustomer" placeholder="Enter Average Cookies Sold Per Customer">
+                    </label>
+            
+                </fieldset>
+                    <button>Add Store</button>
+            </form>
+        </div>
+        <div class="sales-table">
+            <h1>Sales Data</h1>
+            <table id="sales-table"></table>
+        </div>
     </main>
+    <footer>
+
+    </footer>
     <script src="js/sales.js"></script>
 </body>
 </html>

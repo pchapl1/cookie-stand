@@ -43,6 +43,10 @@ nav ul {
     list-style-type: none;
 }
 
+nav ul li {
+    margin-left: 3rem;
+}
+
 nav img {
     width: 200px;
     height: 70px;
@@ -94,6 +98,8 @@ div.location {
     text-align: center;
     background-color: white;
 }
+
+
 
 footer {
     border: 1px solid black;
