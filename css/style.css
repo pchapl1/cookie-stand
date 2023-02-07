@@ -99,10 +99,28 @@ div.location {
     background-color: white;
 }
 
+#images-div {
+    border: 2px solid white;
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
 
+#images-div img{
+    width: 150px;
+    height: 100px;
+    border: 2px solid black;
+    margin: .5rem;
+}
+
+#merch-header {
+    margin-top: 2rem;
+}
 
 footer {
-    border: 1px solid black;
+    border: 1px solid white;
     margin: 1rem 0 0 0;
     text-align: center;
     padding: 1rem;
